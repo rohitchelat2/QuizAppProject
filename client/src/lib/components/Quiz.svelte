@@ -48,6 +48,7 @@
             questions = await contentApi.addQuestion(e, topicId);   
             
             questions = unsortQuestionOptions(questions);
+            e.target.reset();
             dialog.close();
       }
      
