@@ -13,7 +13,7 @@ app.use("/*", cors());
 app.use("/*", logger());
 app.use("/api/content/*", jwt({secret: 'thaakol', }));
 app.use("/api/content/manage/*", adminCheck);
-app.get("/", (c) => c.json({ message: "Hello world!" }));
+app.get("/", (c) => c.json({ message: "Hello world!2" }));
 
 app.get("/api/content/admin", authController.becomeAdmin);
 app.post("/api/auth/register", authController.registerUser);
