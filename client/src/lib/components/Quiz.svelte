@@ -49,6 +49,7 @@
             
             questions = unsortQuestionOptions(questions);
             e.target.reset();
+            editQuestion = {}
             dialog.close();
       }
      
@@ -161,7 +162,7 @@
 
 <!--edit question snippet-->
 
-<dialog id="dialogBox" bind:this={dialog}>
+<dialog id="dialogBox" bind:this={dialog} onclose={() => editQuestion={}}>
       {#if editQuestion.question_text}
             <label> Question <input  onchange={updateQuestion} name="questionText" type="text" bind:value={editQuestion.question_text} required> </label><br>
             <label> Correct answer <input onchange={updateOption(editQuestion.options[0])} name="optionTextC"  type="text"  bind:value={editQuestion.options[0].option_text} required> </label><br>
