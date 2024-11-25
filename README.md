@@ -24,12 +24,16 @@ Coding tool used was VS code and Development environment was setup in Docker, in
 
 ### Database and Schema
 The app uses Posgres SQL for database. While developing, schema was setup using Flyway, in Docker. And later it was deployed to Neon DB online service and schema was setup manually using SQL querries. 
+
 **New leanings:** Use of 'ON DELETE' in Database schema for Foreign keys, which helped reduce the amount code required for delete action and helped implement a less error prone delete function
+
 **Want to learn and implement:** Enabling CI/CD and migration by connecting Neon and Github
 
 ### Autherisation of Users and Admins
 JWT tokens are used for authorisation. And used inbuilt JWT middleware for checking and authorizing all users trying to access "/api/content/", and also it decodes the user info from the token for further server actions. An extra custom middleware was created for checking Admin authorization if the link starts with "/api/content/manage/".
+
 **New leanings:** Use of JWT tockens and authenticater
+
 **Want to learn and implement:** Using HTTP-only cookies and JWT combined
 
 ### Svelte and Svelte KIT
