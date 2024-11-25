@@ -18,7 +18,7 @@ Project Requirements (from the course): https://fitech101.aalto.fi/web-software-
 - E2E Playwright\
 - Deno Deploy
 
-## Detailed overview and Learnings
+## Architecture, Overview and Learnings
 ### Development environment
 Coding tool used was VS code and Development environment was setup in Docker, including FLyway, Server, client and E2E testing. First step of the project was creating Docker compose file manually and creating the project architecture. 
 
@@ -27,21 +27,31 @@ The app uses Posgres SQL for database. While developing, schema was setup using 
 
 **New leanings:** Use of 'ON DELETE' in Database schema for Foreign keys, which helped reduce the amount code required for delete action and helped implement a less error prone delete function
 
-**Want to learn and implement:** Enabling CI/CD and migration by connecting Neon and Github
+**Want to learn and implement:** Enabling CI/CD and migration by connecting Neon with Github
+
+
+### Svelte and SvelteKit
+Client side was created using with Svelte using aditional support of SvelteKit. It works as SPA with conditional componets for each functinality. When I statrted coding I had only less than 15hrs of expeirence with Svelte. So the structure and many methods used in the app is not as clear as I wanted it to be, And many things learned while coding made me realise, it could have been structured and coded much better and clearly. Custom CSS is being used for now, so responsiveness and styling is not to the perfection
+
+**New leanings:** use of $state for reactive states,   Svelte animation, in: and out: usage
+
+**Want to learn and implement:** Routing in client side using SvelteKit,  Using Tailwind CSS, better components break down, cleaning up the code,
+
+
+### Server - Deno(Hono)
+Server side was created using Hono Web application framework. Inbuilt middlewares are being used for routing, CORS, logger and JWT tockens and authorisation. Architecture of the serverside was created following the course material.
+
+**Want to learn and implement:** Want to restrict CORS to the exact domain of the client
+
+### REST Api
 
 ### Autherisation of Users and Admins
 JWT tokens are used for authorisation. And used inbuilt JWT middleware for checking and authorizing all users trying to access "/api/content/", and also it decodes the user info from the token for further server actions. An extra custom middleware was created for checking Admin authorization if the link starts with "/api/content/manage/".
 
 **New leanings:** Use of JWT tockens and authenticater
 
-**Want to learn and implement:** Using HTTP-only cookies and JWT combined
+**Want to learn and implement:** Using HTTP-only cookies and JWT combined for better security
 
-### Svelte and Svelte KIT
-
-### Server - Deno(Hono)
-
-### REST Api and CORS
-Currently CORS is enabled through CORS middleware and all API endpoints are openly accesible. 
 
 ### Deplyment and CI/CD
 
