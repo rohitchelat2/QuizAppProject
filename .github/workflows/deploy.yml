@@ -24,6 +24,7 @@ jobs:
           deno-version: v2.x
 
       - name: Install dependencies
+        working-directory: ./client
         run: npm install
 
       - name: Build step
