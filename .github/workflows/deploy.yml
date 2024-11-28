@@ -38,5 +38,5 @@ jobs:
         with:
           project: "quiz-app-2024"
           entrypoint: "main.js"
-          root: "."
+          root: "./client/build"
 
