@@ -37,6 +37,5 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "quiz-app-2024"
-          entrypoint: "mod.js"
           root: "client/build"
 
