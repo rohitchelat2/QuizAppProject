@@ -33,6 +33,8 @@
               page = "content"
             }
             await userApi.authValidityAndUser();
+          }else{
+            page = "home"
           }
           
           
