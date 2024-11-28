@@ -31,12 +31,12 @@ jobs:
 
       - name: Build step
         working-directory: ./client
-        run: "deno build task"
+        run: "deno task build"
 
       - name: Upload client to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "quiz-app-2024"
-          entrypoint: "index.html"
-          root: "./client/build"
+          entrypoint: "main.js"
+          root: "."
 
