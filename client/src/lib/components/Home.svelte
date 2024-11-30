@@ -4,7 +4,7 @@
 </script>
 
 <div class="verticalCenter">
-    <div class="text-sky-400">Learning app for <br> <mark>Spaced repetition!</mark></div>
+    <h1>Learning app for <br> <mark>Spaced repetition!</mark></h1>
     <button class="borderGreen" onclick={()=>{userDetails.user?page="content":page="login"}}>Try it now!</button>
 </div>
 
