@@ -38,5 +38,5 @@ jobs:
         with:
           project: "quiz-app-2024"
           entrypoint: "output/server/index.js"
-          root: "client/.svelte-kit"
+          root: "client/.svelte-kit/output"
 
