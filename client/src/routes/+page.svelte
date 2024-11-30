@@ -67,15 +67,22 @@
 </div>
 {#if response.status||response.error}<Status bind:response/> {/if}
 
-  
-  
-  
-  <style>
-   
-  :global {
+<h1 class="text-sky-400 text-3xl font-bold">
+  Hello world!
+</h1>
+
+<style lang="postcss">
+   :global {
     @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap');
 
   
+  
+  
+  :global(html) {
+    background-color: theme(colors.gray.100);
+  }
+   
+ 
 
     body, button, p, h1, h3, input{
       font-family: "Geist Mono", serif;
