@@ -10,7 +10,7 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     env:
-      PUBLIC_API_URL: ${{ secrets.PUBLIC_API_URL }}
+      PUBLIC_API_URL: ${{ secrets.SERVER }}
       
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -38,5 +38,5 @@ jobs:
         with:
           project: "quiz-app-2024"
           entrypoint: "https://jsr.io/@std/http/1.0.9/file_server.ts"
-          root: "client/.svelte-kit"
+          root: "client/build"
 
