@@ -37,6 +37,6 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "quiz-app-2024"
-          entrypoint: "client/.svelte-kit/output/server/index.js"
+          entrypoint: "output/server/index.js"
           root: "client/.svelte-kit"
 
