@@ -37,6 +37,6 @@ jobs:
         uses: denoland/deployctl@v1
         with:
           project: "quiz-app-2024"
-          entrypoint: "https://jsr.io/@std/http/1.0.9/file_server.ts"
+          entrypoint: "https://jsr.io/@std/http/1.0.9/file_server.js"
           root: "client/build"
 
