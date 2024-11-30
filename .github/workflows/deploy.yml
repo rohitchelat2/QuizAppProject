@@ -38,5 +38,5 @@ jobs:
         with:
           project: "quiz-app-2024"
           entrypoint: "https://jsr.io/@std/http/1.0.9/file_server.ts"
-          root: "client/build"
+          root: "client/.svelte-kit"
 
