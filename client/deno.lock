@@ -447,7 +447,10 @@
         "npm:@sveltejs/adapter-static@3",
         "npm:@sveltejs/kit@2",
         "npm:@sveltejs/vite-plugin-svelte@4",
+        "npm:autoprefixer@^10.4.20",
+        "npm:postcss@^8.4.49",
         "npm:svelte@5",
+        "npm:tailwindcss@^3.4.15",
         "npm:vite@^5.0.3"
       ]
     }
