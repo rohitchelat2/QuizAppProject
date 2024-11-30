@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PUBLIC_API_URL: https://quiz-app-project.deno.dev
-
+      
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
