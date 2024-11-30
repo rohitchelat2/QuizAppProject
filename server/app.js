@@ -7,11 +7,19 @@ import * as authController from "./controllers/authController.js"
 import * as contentController from "./controllers/cotnentController.js"
 import {adminCheck} from "./middlewares/middlewares.js"
 const app = new Hono()
+let secret;
+
+if (Deno.env.get(Deno.env.get("JWT_SECRET"))) {
+    secret = postgres(Deno.env.get("JWT_SECRET"));
+  } else {
+    secret = "temp";
+  }
+
 
 
 app.use("/*", cors());
 app.use("/*", logger());
-app.use("/api/content/*", jwt({secret: 'thaakol', }));
+app.use("/api/content/*", jwt({secret: secret, }));
 app.use("/api/content/manage/*", adminCheck);
 app.get("/", (c) => c.json({ message: "Hello world!2" }));
 

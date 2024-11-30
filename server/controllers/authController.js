@@ -1,7 +1,14 @@
 import * as userService from "../services/userService.js"
 import {hash, verify } from "scrypt"
 import * as jwt from "@hono/hono/jwt"
-const secret = 'thaakol'
+let secret;
+
+if (Deno.env.get(Deno.env.get("JWT_SECRET"))) {
+    secret = postgres(Deno.env.get("JWT_SECRET"));
+  } else {
+    secret = "temp";
+  }
+
 const registerUser = async (c) => {
     const body = await c.req.json();
     console.log(body.password,body.verification,body.email)
