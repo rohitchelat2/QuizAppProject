@@ -9,13 +9,13 @@ import {adminCheck} from "./middlewares/middlewares.js"
 const app = new Hono()
 let secret;
 
-if (Deno.env.get(Deno.env.get("JWT_SECRET"))) {
+if (Deno.env.get("JWT_SECRET")) {
     secret = postgres(Deno.env.get("JWT_SECRET"));
   } else {
     secret = "temp";
   }
 
-
+console.log(secret)
 
 app.use("/*", cors());
 app.use("/*", logger());

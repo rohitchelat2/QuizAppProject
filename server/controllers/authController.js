@@ -3,7 +3,7 @@ import {hash, verify } from "scrypt"
 import * as jwt from "@hono/hono/jwt"
 let secret;
 
-if (Deno.env.get(Deno.env.get("JWT_SECRET"))) {
+if (Deno.env.get("JWT_SECRET")) {
     secret = postgres(Deno.env.get("JWT_SECRET"));
   } else {
     secret = "temp";
