@@ -51,7 +51,7 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
     }
     
 </script>
-
+<div class="fullscreen">
 <div class="dashboardContainer"><Dashboard bind:page bind:editMode {userDetails}/></div>
 
 <div class="mainContainer">
@@ -69,7 +69,7 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
 
 
 
-
+</div>
 <style>
  
 :global {
@@ -80,8 +80,33 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
   body, button, p, h1, h3, input{
     font-family: "Geist Mono", serif;
   }
-  body {
-    background-color: #EDF4F2;
+
+
+  html {
+  --s: 30px; /* control the size*/
+  --c1: #f3f5f0;
+  --c2: #d5eadc;
+  
+  --_g: 
+     var(--c2) 6%  14%,var(--c1) 16% 24%,var(--c2) 26% 34%,var(--c1) 36% 44%,
+     var(--c2) 46% 54%,var(--c1) 56% 64%,var(--c2) 66% 74%,var(--c1) 76% 84%,var(--c2) 86% 94%;
+  background:
+    radial-gradient(100% 100% at 100% 0,var(--c1) 4%,var(--_g),rgba(138, 138, 138, 0.533) 96%,#d8d8d800),
+    radial-gradient(100% 100% at 0 100%,#d8d8d800, rgba(138, 138, 138, 0.533) 4%,var(--_g),var(--c1) 96%)
+    var(--c1);
+  background-size: var(--s) var(--s);
+}
+
+
+.fullscreen {
+  background: rgb(255,255,255, 0.3);
+  background: linear-gradient(238deg, rgba(255,255,255,0.7) 0%, rgba(203, 206, 191, 0.687) 82%, rgba(161, 185, 163, 0.701) 100%);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+
 }
 
   button{
@@ -173,15 +198,18 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2vw;
+    padding: 3vw;
     padding-top: 1vw;
+    border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgb(255,255,255, 0.3);
+    background: linear-gradient(238deg, rgba(255,255,255,1) 0%, rgb(218, 220, 210) 82%, rgb(196, 209, 197) 100%);
    }
+   
 .centerHeading{
   text-align: center; 
   padding-bottom: 2vw;
@@ -192,10 +220,10 @@ input[type=email],input[type=password],input[type=text] {
       min-width: 8vw;
       margin-bottom: 2vw;
       box-sizing: border-box;
-      border: 2px solid #6b716f;
+      border: 1px solid #6b716f;
       border-radius: 7px;
       font-size: 16px;
-      padding: 12px 20px 12px 40px;
+      padding: 12px 10px 12px 40px;
     }
     input[type=email].textAndButton,input[type=password].textAndButton,input[type=text].textAndButton{
       margin: 0;
@@ -233,7 +261,6 @@ input[type=email],input[type=password],input[type=text] {
           position: fixed;
           top: 0;
           right: 2%;
-          width: 16vw;
           min-height: 7vh;
           z-index:9999;
           display: flex;
@@ -248,13 +275,11 @@ input[type=email],input[type=password],input[type=text] {
 }
 .mainContainer{
           position: fixed;
-  
           bottom: 0;
           left: 0;
           width: 100vw;
           height: 100vh;
           z-index: 1;
-          
 
 }
 </style>
