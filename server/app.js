@@ -10,7 +10,7 @@ const app = new Hono()
 let secret;
 
 if (Deno.env.get("JWT_SECRET")) {
-    secret = postgres(Deno.env.get("JWT_SECRET"));
+    secret = Deno.env.get("JWT_SECRET");
   } else {
     secret = "temp";
   }

@@ -4,7 +4,7 @@ import * as jwt from "@hono/hono/jwt"
 let secret;
 
 if (Deno.env.get("JWT_SECRET")) {
-    secret = postgres(Deno.env.get("JWT_SECRET"));
+    secret = Deno.env.get("JWT_SECRET");
   } else {
     secret = "temp";
   }
