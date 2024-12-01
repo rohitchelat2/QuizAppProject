@@ -15,7 +15,6 @@ if (Deno.env.get("JWT_SECRET")) {
     secret = "temp";
   }
 
-console.log(secret)
 
 app.use("/*", cors());
 app.use("/*", logger());
