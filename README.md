@@ -48,12 +48,13 @@ Server side was created using Hono Web application framework. Inbuilt middleware
 ### Autherisation of Users and Admins
 JWT tokens are used for authorisation. And used inbuilt JWT middleware for checking and authorizing all users trying to access "/api/content/", and also it decodes the user info from the token for further server actions. An extra custom middleware was created for checking Admin authorization if the link starts with "/api/content/manage/".
 
-**New leanings:** Use of JWT tockens and authenticater
+**New leanings:** Use of JWT tockens and authenticater middleware
 
 **Want to learn and implement:** Using HTTP-only cookies and JWT combined for better security
 
 
 ### Deplyment and CI/CD
+GitHub and GitHub Actions are utilized for deployment. The server-side code is deployed automatically by linking the server-side project in Deno Deploy directly to its repository. For the client-side code, a separate GitHub Actions deployment workflow is implemented. This workflow builds the client-side application using Deno Build and deploys the compiled version to the client-side project in Deno Deploy.
 
 
 
