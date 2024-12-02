@@ -52,7 +52,7 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
     
 </script>
 <div class="fullscreen">
-<div class="dashboardContainer"><Dashboard bind:page bind:editMode {userDetails}/></div>
+<Dashboard bind:page bind:editMode {userDetails}/>
 
 <div class="mainContainer">
 {#if page==="home"} <Home bind:page />
@@ -255,24 +255,7 @@ input[type=email],input[type=password],input[type=text] {
       flex-direction: row;
     }
 }
-.dashboardContainer{
-          padding: 2vw;
-          padding-top: 3vh;
-          position: fixed;
-          top: 0;
-          right: 2%;
-          min-height: 7vh;
-          z-index:9999;
-          display: flex;
-          flex-direction: column;
-          background-color: #31473A;
-          color: #EDF4F2;
-          justify-content: center;
-          border-bottom-right-radius: 20px;
-          border-bottom-left-radius: 20px;
-  
-         /* padding:2vw;*/
-}
+
 .mainContainer{
           position: fixed;
           bottom: 0;
