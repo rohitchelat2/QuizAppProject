@@ -3,18 +3,20 @@
  import { send, receive } from './transition.js';
  let answered =$state();
  let opid =$state();
- let { question, i, currentQuestion, validate, editMode, dialog = $bindable(), editQuestion=$bindable(), editQuestionIndex=$bindable(), renderSnippet=$bindable(), deleteQuestion} =$props()
+ let { question, i, currentQuestion, position, postPosition, validate, editMode, dialog = $bindable(), editQuestion=$bindable(), editQuestionIndex=$bindable(), renderSnippet=$bindable(), deleteQuestion} =$props()
 
 
  import { onMount } from 'svelte';
  onMount(async () => {
 
-console.log(i, currentQuestion)         
+  
+  console.log(postPosition)
 });
+
 </script>
 
 
-<div class="quizCard {i>currentQuestion?'flipped':''} {i>currentQuestion?'answered':''}" style="--left:{i}; --zin:{i}; --c1:{question.correctAnswer?'green':question.wrongAnswer?'red':''}" in:receive={{ key: question.id }}
+<div class="quizCard {i===currentQuestion?'':'flipped'} " style="--left:{position*8}; --opacity:{(10-(postPosition*2))/10}; --height:{postPosition*-5}; --zin:{10-postPosition}; --c1:{question.correctAnswer?'green':question.wrongAnswer?'red':'white'}" in:receive={{ key: question.id }}
 out:send={{ key: question.id }} >
 
 <div class="front">
@@ -26,8 +28,11 @@ out:send={{ key: question.id }} >
   
 
 
-<h3>{question.question_text}</h3><br>
-{#if i===currentQuestion}<div class="answerOptions">
+
+{#if i===currentQuestion}
+<h3>{question.question_text}</h3>
+<div class="answerOptions">
+  
 {#each question.unSortedOptions as option}
 
 <button class="optionbutton {option.is_correct&&answered?'green':''}   {option.id===opid&&!option.is_correct&&answered?'red':''} " onclick={()=>{answered=true; opid=option.id; setTimeout(() => {
@@ -53,29 +58,25 @@ out:send={{ key: question.id }} >
             position: absolute;
             background-color: #EDF4F2;
             aspect-ratio: 2.5 / 4;
-            height: 15em;
-            top: 30%;
+            height:  calc( (50 + var(--height))*1vh);
+            top: 50%;
             padding: 5vh;
             border-radius: 1vh;
             box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
             margin: 1vh;
-            left: calc( (46 + var(--left))*1vw);
+            left: calc( (29 + var(--left))*1vw);
             z-index: calc( var(--zin) + 8 ); 
-            transform: rotateY(180deg);
-            transition: transform 1s;
+            transform: rotateY(180deg) translate(-50%,-50%);
+            transition: all 1s;
             transform-style: preserve-3d;
+            opacity: var(--opacity);
       }
 
-      .answered{
-      position: none;
-        height: 3em;
-   
 
-      }
 
 
       .quizCard.flipped {
-        transform: rotateY(0);
+        transform: rotateY(0) translate(50%,-50%);
       }
 
       .front, .back {

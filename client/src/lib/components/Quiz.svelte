@@ -112,7 +112,7 @@
 {#if adminDetails.admin&&editMode} 
 <button class="addQuestionButton" onclick={() => dialog.showModal()}>+</button>
 
-<div class="slider"><button class="darkGreen" onclick={()=>(currentQuestion===0?currentQuestion:currentQuestion--)}>Previous</button> <button class="darkGreen" onclick={()=>(currentQuestion===questions.length-1?currentQuestion:currentQuestion++)}>Next</button></div>
+<div class="slider"><button class="darkGreen" onclick={()=>(currentQuestion===0?currentQuestion:currentQuestion--)}>&LeftAngleBracket;</button> <button class="darkGreen" onclick={()=>(currentQuestion===questions.length-1?currentQuestion:currentQuestion++)}>&RightAngleBracket;</button></div>
 {/if}
 
 
@@ -125,11 +125,11 @@
 {#if questions.length>0}
 {#each questions as question, i}
 
-{#if i<=currentQuestion}
-<QuizCard {question} {i}  {currentQuestion} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
-{:else}
-<div class="answeredRow"><QuizCard {question} {i}  {currentQuestion} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/></div>
+{#if (i-currentQuestion)<=4&&(i-currentQuestion)>=-3}
+<QuizCard {question} {i} {currentQuestion} position={i-currentQuestion} postPosition ={Math.sqrt((i-currentQuestion)*(i-currentQuestion))} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
 {/if}
+
+
 {/each}
 {/if}
 
