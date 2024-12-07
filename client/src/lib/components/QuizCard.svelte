@@ -35,9 +35,9 @@ out:send={{ key: question.id }} >
   
 {#each question.unSortedOptions as option}
 
-<button class="optionbutton {option.is_correct&&answered?'green':''}   {option.id===opid&&!option.is_correct&&answered?'red':''} " onclick={()=>{answered=true; opid=option.id; setTimeout(() => {
+<button class="optionbutton {option.is_correct&&answered?'green':''}   {option.id===opid&&!option.is_correct&&answered?'red':''} " onclick={()=>{if(editMode===false){answered=true; opid=option.id; setTimeout(() => {
   validate(option, i) ; answered=false; opid="";
-      },2000)	  }}>{option.option_text}</button>
+      },2000)	  }}}>{option.option_text}</button>
 {/each}</div>
 {#if editMode}
 <button class="quizCardSmallButton" style="right:1vh; top:1vh;" onclick={()=> {editQuestion = question; renderSnippet===1; editQuestionIndex = i; dialog.showModal(); }}>&#x270E;</button><button class="quizCardSmallButton" style="right:1vh; bottom:1vh;" onclick={deleteQuestion(question.id)}>&#128465;</button>{/if}

@@ -21,6 +21,7 @@
 
 
       let questions = $state([{}]);
+      
 
       // while loading retrieving all questions from selected topic
       
@@ -31,6 +32,17 @@
             questions.sort(()=> Math.random() - 0.5);
             currentQuestion = (questions.length )-1;            
 	});
+
+      const reset = async () => {
+            questions = await contentApi.getQuestions(topicId);
+            questions = unsortQuestionOptions(questions);
+            questions.sort(()=> Math.random() - 0.5);
+            currentQuestion = (questions.length )-1;     
+            answeredCorrectly = 0;
+      }
+     
+
+ 
 
       const unsortQuestionOptions = (questions) =>{
             questions = questions.map( (question) => { 
@@ -50,7 +62,16 @@
             editQuestion = {}
             dialog.close();
       }
-     
+      $effect(() => {
+            const checkEditOff= $state(editMode)
+           
+            if(checkEditOff===false)
+      {
+            reset();
+           
+      }
+      })
+
       //this function validates each answer and sends log to the api
       const validate = async(option, i) =>{
             if(option.is_correct===true){
@@ -75,6 +96,7 @@
       const deleteQuestion = async (qId) =>{
             questions = await contentApi.deleteQuestion(topicId, qId);
             questions = unsortQuestionOptions(questions);
+            
       }
       
       const updateQuestion = async (e)=>{
@@ -107,7 +129,10 @@
 
 
 <div class="topicBox"><div class="topicHeading">{topic}</div> <button class="closeButton" onclick={()=> topic=""}>x</button></div>
-<div class="correctAnswerbox">{answeredCorrectly}/{questions.length}</div>
+<div class="correctAnswerbox {currentQuestion===-1?'finalStatus':''}" >{answeredCorrectly}/{questions.length}
+{#if currentQuestion===-1}
+<button class="smallButton" onclick={reset}>&#8634;</button>
+{/if}</div>
 
 {#if adminDetails.admin&&editMode} 
 <button class="addQuestionButton" onclick={() => dialog.showModal()}>+</button>
@@ -124,9 +149,11 @@
 
 {#if questions.length>0}
 {#each questions as question, i}
+{#if currentQuestion>=0}
 
 {#if (i-currentQuestion)<=4&&(i-currentQuestion)>=-3}
 <QuizCard {question} {i} {currentQuestion} position={i-currentQuestion} postPosition ={Math.sqrt((i-currentQuestion)*(i-currentQuestion))} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
+{/if}
 {/if}
 
 
@@ -218,19 +245,7 @@
         margin: 0;
         padding: .5vw;
       }
-      .answeredRow{
-            position: fixed;
-            height: 10vh;
-            top:80%;
-            width: 100vw;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            -ms-flex-align: center;
-            justify-content: center;
-            text-align: center;
-            z-index: 0;
-      }
+
       .topicBox{
             position: fixed;
             left: 2vw;
@@ -280,9 +295,6 @@
       width:40vw;
       display: flex;
       justify-content: center;
-
-
-
     }
 
     .correctAnswerbox{
@@ -295,5 +307,24 @@
       color: #31473A;
       display: flex;
       justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .finalStatus{
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+    .smallButton{
+            background: none;
+            width: auto;
+            height: auto;
+            font-size: 1.2em;
+            font-weight: 600;
+    }
+    .smallButton:hover{
+      background: none;
     }
  </style>
