@@ -99,6 +99,7 @@ out:send={{ key: question.id }} >
       .back {
         flex-direction: column;
         transform: rotateY(180deg);
+        padding: 1.5vw;
       }
 
       .answerOptions{
@@ -109,7 +110,7 @@ out:send={{ key: question.id }} >
       .optionbutton{
         text-align: left;
         border: 2px dotted #31473A;
-        padding: 1vw;
+        padding: 0.5vw;
       }
       .green{
         background-color: green;
@@ -129,7 +130,7 @@ out:send={{ key: question.id }} >
             font-size: 1.5em;
       }
       h3{
-        font-size: 1.4em;
+        font-size: 1.2em;
         font-weight: 300;
       }
 
