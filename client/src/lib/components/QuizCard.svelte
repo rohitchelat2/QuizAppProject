@@ -58,7 +58,7 @@ out:send={{ key: question.id }} >
             position: absolute;
             background-color: #EDF4F2;
             aspect-ratio: 2.5 / 4;
-            height:  calc( (50 + var(--height))*1vh);
+            height:  calc( (55 + var(--height))*1vh);
             top: 50%;
             padding: 5vh;
             border-radius: 1vh;
