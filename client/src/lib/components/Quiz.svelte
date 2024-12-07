@@ -29,9 +29,7 @@
 		questions = await contentApi.getQuestions(topicId);
             questions = unsortQuestionOptions(questions);
             questions.sort(()=> Math.random() - 0.5);
-            currentQuestion = (questions.length )-1;
-            leftCards = 20/(currentQuestion-1)
-            
+            currentQuestion = (questions.length )-1;            
 	});
 
       const unsortQuestionOptions = (questions) =>{
@@ -56,7 +54,7 @@
       //this function validates each answer and sends log to the api
       const validate = async(option, i) =>{
             if(option.is_correct===true){
-                  console.log("correct answer!")
+        
                   questions[i].correctAnswer=true;
                   answeredCorrectly++;
                   totalAnswered.number++;
@@ -64,19 +62,12 @@
                                     
             }
             else{
-                  console.log("wrong answer!")
                   questions[i].wrongAnswer=true;
                   totalAnswered.number++;
             }
            const result = await contentApi.logAnswer(option, topicId);
-          
-           
            currentQuestion--;
-          
-           rightCards = 15/(questions.length - currentQuestion)
-           leftCards = 15/(currentQuestion)
-           
-
+           rightCards = 15/(questions.length - currentQuestion)  
             //next question
       }
 
@@ -111,11 +102,6 @@
            
            editQuestion.options[editQuestion.options.length] = {new: true};
       }
-
-    
-      
-
-
 </script>
 
 
@@ -135,29 +121,20 @@
 
 
 <!--question row-->
-<div class="quizRow">
+
 {#if questions.length>0}
 {#each questions as question, i}
 
-{#if i<currentQuestion}
-<QuizCard {question} {i} zin={1} left={(leftCards*i)+1} height ={1} width = {1}  activeQuestion = {false}  {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
-{/if}
-
-{#if i === currentQuestion}
-<QuizCard {question} {i} zin={10} left={35} height ={2} width = {2}  activeQuestion = {true}  {validate} {editMode} bind:dialog bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
-{/if}
-
-
-
-
-{#if i>currentQuestion}
-<QuizCard {question} {i} zin={questions.length-i} left={80-((rightCards*(questions.length-i))+1)} height ={1} width = {1}  activeQuestion = {false}  {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
+{#if i<=currentQuestion}
+<QuizCard {question} {i}  {currentQuestion} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
+{:else}
+<div class="answeredRow"><QuizCard {question} {i}  {currentQuestion} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/></div>
 {/if}
 {/each}
 {/if}
 
 
-</div>
+
 
 
 <!--edit question snippet-->
@@ -241,16 +218,17 @@
         margin: 0;
         padding: .5vw;
       }
-      .quizRow{
+      .answeredRow{
             position: fixed;
-            height: 50vh;
-            top:50%;
-            transform: translate(0%, -50%);
-            min-width: 100vw;
+            height: 10vh;
+            top:80%;
+            width: 100vw;
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             -ms-flex-align: center;
+            justify-content: center;
+            text-align: center;
             z-index: 0;
       }
       .topicBox{
