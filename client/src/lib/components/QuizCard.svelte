@@ -5,14 +5,6 @@
  let opid =$state();
  let { question, i, currentQuestion, position, postPosition, validate, editMode, dialog = $bindable(), editQuestion=$bindable(), editQuestionIndex=$bindable(), renderSnippet=$bindable(), deleteQuestion} =$props()
 
-
- import { onMount } from 'svelte';
- onMount(async () => {
-
-  
-  console.log(postPosition)
-});
-
 </script>
 
 
