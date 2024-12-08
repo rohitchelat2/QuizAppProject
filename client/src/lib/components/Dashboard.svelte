@@ -113,7 +113,7 @@
             margin: 6vw;
       }
       .mobile-dashboardExtended{
-            height: 40vh;
+            min-height: 40vh;
 
       }
 

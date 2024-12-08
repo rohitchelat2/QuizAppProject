@@ -76,6 +76,18 @@
       padding: 6px;
       font-size: 1.5em;
     }
+    @media only screen and (max-width: 600px) {
+      .topicBox{
+            width: 80%;
+            left: 50%;
+      }
+      .inputAndButton {
+            width: 80%;
+      }
+      input[type=text].textAndButton{
+            padding: 1vw;
+      }
+    }
 </style>
   
  
