@@ -3,7 +3,7 @@
  import { send, receive } from './transition.js';
  let answered =$state();
  let opid =$state();
- let { question, i, currentQuestion, position, postPosition, validate, editMode, dialog = $bindable(), editQuestion=$bindable(), editQuestionIndex=$bindable(), renderSnippet=$bindable(), deleteQuestion} =$props()
+ let { question, i, currentQuestion, position, postPosition, validate, editMode,  dialog = $bindable(), editQuestion=$bindable(), editQuestionIndex=$bindable(), renderSnippet=$bindable(), deleteQuestion} =$props()
 
 </script>
 
@@ -56,9 +56,9 @@ out:send={{ key: question.id }} >
             border-radius: 1vh;
             box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
             margin: 1vh;
-            left: calc( (29 + var(--left))*1vw);
+            left: calc(  (50 + var(--left))*1%);
             z-index: calc( var(--zin) + 8 ); 
-            transform: rotateY(180deg) translate(-50%,-50%);
+            transform: rotateY(180deg) translate(50%,-50%);
             transition: all 1s;
             transform-style: preserve-3d;
             opacity: var(--opacity);
@@ -68,7 +68,7 @@ out:send={{ key: question.id }} >
 
 
       .quizCard.flipped {
-        transform: rotateY(0) translate(50%,-50%);
+        transform: rotateY(0) translate(-50%,-50%);
       }
 
       .front, .back {
@@ -143,4 +143,10 @@ out:send={{ key: question.id }} >
   background-size: var(--s) var(--s);
   border-radius: 1vh;
         }
+
+
+        @media only screen and (max-width: 600px) {
+          .quizCard{
+            height:  calc( (48 + var(--height))*1vh);}
+          }
 </style>

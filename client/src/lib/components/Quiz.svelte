@@ -152,7 +152,7 @@
 {#if currentQuestion>=0}
 
 {#if (i-currentQuestion)<=4&&(i-currentQuestion)>=-3}
-<QuizCard {question} {i} {currentQuestion} position={i-currentQuestion} postPosition ={Math.sqrt((i-currentQuestion)*(i-currentQuestion))} {validate} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
+<QuizCard {question} {i} {currentQuestion} position={i-currentQuestion} postPosition ={Math.sqrt((i-currentQuestion)*(i-currentQuestion))} {validate} {dialog} {editMode} bind:editQuestion bind:editQuestionIndex bind:renderSnippet {deleteQuestion}/>
 {/if}
 {/if}
 
@@ -210,7 +210,7 @@
  <style>
  
       dialog{
-            border-radius: 20px;
+            border-radius: 10px;
             padding: 3vw;
             opacity: 1;
             background-color: #EDF4F2;
@@ -224,13 +224,13 @@
             top: 0.8vw;
             font-size: 1.3em;
             font-weight: 600;
-            background-color: none;
+            background: none;
             color:#31473A;
             padding: 0%;
 
       }
       .dialogClose:hover{
-            background-color: none;
+            background: none;
             color:#637a6d;
             
       }
@@ -243,16 +243,10 @@
 
       input[type=text].optionAndClose{
         margin: 0;
-        padding: .5vw;
+        
       }
 
-      .topicBox{
-            position: fixed;
-            left: 2vw;
-            top: 2vw;
-            display: flex;
-            
-      }
+    
      
       .topicHeading{
             padding: 3px;
@@ -327,4 +321,36 @@
     .smallButton:hover{
       background: none;
     }
+
+    @media only screen and (min-width: 600px) { 
+      .topicBox{
+            position: fixed;
+            left: 2vw;
+            top: 2vw;
+            display: flex;
+            
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      dialog{
+            
+            padding: 10vw;}
+      
+      .dialogClose{
+            width: 4vw;
+            height: 2vw;
+      }
+
+      .topicBox{
+            position: fixed;
+            right: 2vw;
+            bottom: 2vw;
+            display: flex;
+            
+      }
+     
+
+            
+      }
  </style>

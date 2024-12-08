@@ -265,6 +265,34 @@ input[type=email],input[type=password],input[type=text] {
           z-index: 1;
 
 }
+
+
+
+@media only screen and (max-width: 600px) {
+  :global {
+    .centerBox{
+    width: 80%;
+    height: 80%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3vw;
+    padding-top: 1vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgb(255,255,255, 0.3);
+    background: linear-gradient(238deg, rgba(255,255,255,1) 0%, rgb(218, 220, 210) 82%, rgb(196, 209, 197) 100%);
+   }
+
+  }
+  
+}
 </style>
 
   
