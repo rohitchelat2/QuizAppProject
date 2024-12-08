@@ -43,7 +43,7 @@
             {#if !userDetails.user} 
             <div>
                   <button class="darkGreen" onclick={()=>page="login"}>Login</button> 
-                  <button class="" onclick={()=>page="register"}>Register</button> 
+                  <button class="darkGreen" style="right: 10vw;" onclick={()=>page="register"}>Register</button> 
             </div>
                   
             {:else}
