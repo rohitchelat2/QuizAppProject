@@ -27,9 +27,8 @@
 
     @media only screen and (max-width: 600px) {
         h1{
-            h1{
-                font-size: 2.5em;
-            }
+            font-size: 2.5em;
+        
         }
     }
 </style>
