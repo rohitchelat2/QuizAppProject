@@ -24,4 +24,12 @@
         background-color: #31473A;
         color: #EDF4F2;
     }
+
+    @media only screen and (max-width: 600px) {
+        h1{
+            h1{
+                font-size: 2.5em;
+            }
+        }
+    }
 </style>

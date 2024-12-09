@@ -26,7 +26,7 @@
     //  import { user, useUserDetails } from "$lib/states/userState.svelte.js";
       //const userDetails = useUserDetails(); <div id="login"><p>{userDetails.user}</p></div><br>
 </script>
-<div class="centerBox" style="height: 55%;">
+<div class="centerBox" >
   <div class="centerHeading" >
     <h1>Login</h1>
     <p>If you are not registered yet!<button class="" style="padding: 0%;" onclick={()=>page="register"}><strong>Register</strong></button></p>

@@ -272,7 +272,7 @@ input[type=email],input[type=password],input[type=text] {
   :global {
     .centerBox{
     width: 80%;
-    height: 80%;
+    height: auto;
     margin: 0;
     position: absolute;
     top: 50%;
@@ -283,7 +283,8 @@ input[type=email],input[type=password],input[type=text] {
     align-items: center;
     justify-content: center;
     padding: 3vw;
-    padding-top: 1vw;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background: rgb(255,255,255, 0.3);

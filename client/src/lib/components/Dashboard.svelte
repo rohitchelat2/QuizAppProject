@@ -38,15 +38,16 @@
 </MediaQuery>
 <MediaQuery query="(max-width: 700px)" let:matches>
 	{#if matches}
-            <div class="mobile-dashboard" class:mobile-dashboardExtended={extended}>
+            
             
             {#if !userDetails.user} 
-            <div>
+            <div class="signinBox">
                   <button class="darkGreen" onclick={()=>page="login"}>Login</button> 
-                  <button class="darkGreen" style="right: 10vw;" onclick={()=>page="register"}>Register</button> 
+                  <button class="darkGreen" onclick={()=>page="register"}>Register</button> 
             </div>
                   
             {:else}
+            <div class="mobile-dashboard" class:mobile-dashboardExtended={extended}>
             {#if appear===true}
                   <div class="box-inside">
                   <div class="switchBox"><p class="inGreen">User: {userDetails.user}</p> </div>
@@ -61,10 +62,10 @@
             <div class="extendArrowBox"><button class="extendArrow {extended?'rotate':''}" onclick={()=>{ extended = !extended; appear?appear = false:setTimeout(() => {
             appear = true;
             }, "1000");}} >&#65088;</button></div>
-            
+            </div>
             {/if}
             
-      </div>
+      
 
 
 
@@ -74,6 +75,11 @@
 
 
 <style>
+      .signinBox{
+
+            display: flex;
+            justify-content: space-between;
+      }
       .dashboard{
             position: fixed;
             right: 3vw;
