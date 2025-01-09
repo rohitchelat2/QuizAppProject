@@ -51,6 +51,9 @@ const selectTopic = (selectedTopicId , selectedTopic) => {
     }
     
 </script>
+<svelte:head>
+	<title>Learning app</title>
+</svelte:head>
 <div class="fullscreen">
 <Dashboard bind:page bind:editMode {userDetails}/>
 

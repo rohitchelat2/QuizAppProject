@@ -9,7 +9,7 @@
                 },2000)	)
 </script>
 
-<div class="statusBox" class:red={response.error} class:green={response.status}>{response.status}{response.error}</div>
+<div class="statusBox" id="status" class:red={response.error} class:green={response.status}>{response.status}{response.error}</div>
 
 <style>
     .statusBox{
